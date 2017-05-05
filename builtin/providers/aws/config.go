@@ -228,6 +228,9 @@ func (c *Config) Client() (interface{}, error) {
 			HTTPClient:       cleanhttp.DefaultClient(),
 			S3ForcePathStyle: aws.Bool(c.S3ForcePathStyle),
 		},
+		AssumeRoleTokenProvider: func() (string, error) {
+			return c.Token, nil
+		},
 	}
 
 	// Call Get to check for credential provider. If nothing found, we'll get an

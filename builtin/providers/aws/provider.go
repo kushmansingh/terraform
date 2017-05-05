@@ -50,10 +50,10 @@ func Provider() terraform.ResourceProvider {
 			},
 
 			"token": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Default:     "",
-				Description: descriptions["token"],
+				Type:         schema.TypeString,
+				Required:     true,
+				InputDefault: "",
+				Description:  descriptions["token"],
 			},
 
 			"region": {
@@ -480,8 +480,7 @@ func init() {
 		"shared_credentials_file": "The path to the shared credentials file. If not set\n" +
 			"this defaults to ~/.aws/credentials.",
 
-		"token": "session token. A session token is only required if you are\n" +
-			"using temporary security credentials.",
+		"token": "(optional) An MFA token if using MFA with AWS credentials.",
 
 		"max_retries": "The maximum number of times an AWS API request is\n" +
 			"being executed. If the API request still fails, an error is\n" +
